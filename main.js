@@ -12,35 +12,28 @@ $(document).ready(function(){
 
       graficoTorta(data);
 
+      $('.btn').click(function(){
+        // alert('ciao');
+        var valoreAggiunto = parseInt($('input').val());
+        //console.log(valoreAggiunto);
+        var mesiSelect = $('.mesi').val();
+        //console.log(mesiSelect);
+        var venditoriSelect = $('.venditori').val();
+        //console.log(venditoriSelect);
+
+        if (valoreAggiunto != ''){
+          valoreAggiunto
+        }
+
+      })
+
     },
     error: function() {
       alert('errore')
     }
   });
 
-  $('.btn').click(function(){
-    // alert('ciao');
-    var valoreAggiunto = parseInt($('input').val());
-    //console.log(valoreAggiunto);
-    var mesiSelect = $('.mesi').val();
-    //console.log(mesiSelect);
-    var venditoriSelect = $('.venditori').val();
-    //console.log(venditoriSelect);
 
-    // $.ajax({
-    //   url: urlApi,
-    //   method: 'PUT',
-    //   success: function(data) {
-    //     graficoLinea(data);
-    //
-    //     graficoTorta(data);
-    //
-    //   },
-    //   error: function() {
-    //     alert('errore')
-    //   }
-    // });
-  })
 
 
 });
