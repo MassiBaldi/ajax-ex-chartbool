@@ -8,20 +8,28 @@ $(document).ready(function(){
     success: function(data){
       console.log(data);
 
-      var objSospFat = {};
+      var objSospFat = {
+        January: 0,
+        February: 0,
+        March: 0,
+        April: 0,
+        May: 0,
+        June: 0,
+        July: 0,
+        August: 0,
+        September: 0,
+        October: 0,
+        November: 0,
+        December: 0
+      };
 
       for (var i = 0; i < data.length; i++) {
           var obj = data[i];
           //console.log(obj);
           var giornoMeseAnno = obj.date;
           //console.log(giornoMeseAnno);
-          var meseNumero = moment(giornoMeseAnno, 'DD/MM/YYYY').format('MM');
+          var meseNumero = moment(giornoMeseAnno, 'DD/MM/YYYY').format('MMMM');
           //console.log(mese);
-
-          if (objSospFat[meseNumero] == undefined)
-          {
-            objSospFat[meseNumero] = 0;
-          }
 
           objSospFat[meseNumero] += obj.amount;
       }
@@ -34,8 +42,6 @@ $(document).ready(function(){
         arrayLabelsFat.push(key);
         arrayDataFat.push(objSospFat[key]);
       }
-
-      arrayLabelsFat.sort();
 
       console.log(arrayLabelsFat);
       console.log(arrayDataFat);
@@ -58,6 +64,7 @@ $(document).ready(function(){
       });
 
       var objSospVend = {};
+      var venditeTotale = 0;
 
       for (var i = 0; i < data.length; i++) {
           var obj = data[i];
@@ -71,6 +78,7 @@ $(document).ready(function(){
           }
 
           objSospVend[nome] += obj.amount;
+          venditeTotale += obj.amount;
       }
       //console.log(objSospVend);
 
@@ -78,8 +86,9 @@ $(document).ready(function(){
       var arrayDataVend = [];
 
       for (var key in objSospVend) {
+        var percentualeVendite = objSospVend[key] / venditeTotale * 100;
         arrayLabelsVend.push(key);
-        arrayDataVend.push(objSospVend[key]);
+        arrayDataVend.push(percentualeVendite.toFixed(2));
       }
 
       console.log(arrayLabelsVend);
@@ -96,7 +105,6 @@ $(document).ready(function(){
 
             }],
 
-            // These labels appear in the legend and in the tooltips when hovering different arcs
             labels: arrayLabelsVend,
 
         }
