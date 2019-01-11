@@ -20,9 +20,11 @@ $(document).ready(function(){
 
   $('.btn').click(function(){
     // alert('ciao');
-    var valoreAggiunto = $('input').val();
+    var valoreAggiunto = parseInt($('input').val());
     //console.log(valoreAggiunto);
     var mesiSelect = $('.mesi').val();
+    mesiSelect = moment(mesiSelect, 'MMMM').format('01/MM/2017');
+    console.log(mesiSelect);
     //console.log(mesiSelect);
     var venditoriSelect = $('.venditori').val();
     //console.log(venditoriSelect);
@@ -81,7 +83,7 @@ function graficoLinea(data){
       var meseNumero = moment(giornoMeseAnno, 'DD/MM/YYYY').format('MMMM');
       //console.log(meseNumero);
 
-      objSospFat[meseNumero] += obj.amount;
+      objSospFat[meseNumero] += parseInt(obj.amount);
   }
   //console.log(objSospFat);
 
@@ -131,8 +133,8 @@ function graficoTorta(data) {
           objSospVend[nome] = 0;
       }
 
-      objSospVend[nome] += obj.amount;
-      venditeTotale += obj.amount;
+      objSospVend[nome] += parseInt(obj.amount);
+      venditeTotale += parseInt(obj.amount);
   }
   //console.log(objSospVend);
 
