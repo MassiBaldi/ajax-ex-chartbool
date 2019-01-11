@@ -134,7 +134,9 @@ function graficoTorta(data) {
       }
 
       objSospVend[nome] += parseInt(obj.amount);
+      console.log(objSospVend[nome]);
       venditeTotale += parseInt(obj.amount);
+      console.log(venditeTotale);
   }
   //console.log(objSospVend);
 
