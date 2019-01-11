@@ -26,17 +26,12 @@ $(document).ready(function(){
           "date": mesiSelect
         },
         success: function(data){
-          graficoLinea(data);
-
-          graficoTorta(data);
-
+          chiamataGET()
         },
         error: function() {
           alert('errore')
         }
       });
-
-      chiamataGET()
 
     }
     else {
