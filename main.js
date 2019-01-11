@@ -2,21 +2,7 @@ var urlApi = 'http://157.230.17.132:4002/sales';
 
 $(document).ready(function(){
 
-  $.ajax({
-    url: urlApi,
-    method: 'GET',
-    success: function(data){
-      console.log(data);
-
-      graficoLinea(data);
-
-      graficoTorta(data);
-
-    },
-    error: function() {
-      alert('errore')
-    }
-  });
+  chiamataGET()
 
   $('.btn').click(function(){
     // alert('ciao');
@@ -50,6 +36,8 @@ $(document).ready(function(){
         }
       });
 
+      chiamataGET()
+
     }
     else {
       alert('Inserisci un valore')
@@ -57,7 +45,24 @@ $(document).ready(function(){
   })
 
 });
+//funzione chiamata GET
+function chiamataGET(){
+  $.ajax({
+    url: urlApi,
+    method: 'GET',
+    success: function(data){
+      console.log(data);
 
+      graficoLinea(data);
+
+      graficoTorta(data);
+
+    },
+    error: function() {
+      alert('errore')
+    }
+  });
+}
 //funzione per grafico linea
 function graficoLinea(data){
   var objSospFat = {
@@ -134,9 +139,9 @@ function graficoTorta(data) {
       }
 
       objSospVend[nome] += parseInt(obj.amount);
-      console.log(objSospVend[nome]);
+      //console.log(objSospVend[nome]);
       venditeTotale += parseInt(obj.amount);
-      console.log(venditeTotale);
+      //console.log(venditeTotale);
   }
   //console.log(objSospVend);
 
